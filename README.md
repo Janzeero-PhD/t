@@ -6,10 +6,18 @@ Model is trained on the small dataset (~50 images) with data augmentation. Class
 
 The further plans are to enlarge number of epochs, play with sizes of images, collect more uniform and larger training dataset.
 
+Please consider (my settings to run this model):
+- Tensorflow version 1.15.0 (older);
+- Keras version 2.0.5 (older);
+- but CUDA is 10.0.
+Probably CUDA should be 9.0. and this will not produce some discrepancies which I faced training this model on my GPU (RTX2060). Will check it later.
+
+
 The examples of training images (without labels):
 ![ex1](https://i.imgur.com/hvuAXqK.jpg)
 ![ex2](https://i.imgur.com/Bit9W8K.jpg)
 ![ex3](https://i.imgur.com/ryhzdyj.jpg)
+
 
 
 The examples of test results (with labels):
