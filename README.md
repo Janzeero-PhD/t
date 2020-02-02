@@ -9,4 +9,4 @@ The further plans are to enlarge number of epochs, play with sizes of images, co
 The examples of training images (without labels):
 
 The examples of test results (with labels):
-![ex1](https://drive.google.com/open?id=1eoN8Nj0BS6kfeKSk6IZK7xuOue9zNfrZ)
+![ex1](https://drive.google.com/drive/u/0/folders/1Pn1sbCTxe_piMBjxwgLun-YoYBssnbj1)
