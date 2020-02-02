@@ -160,16 +160,22 @@ model_all.compile(optimizer='sgd', loss='mae')
 epoch_length = 250
 num_epochs = int(options.num_epochs)
 iter_num = 0
+# for Werner:
+# specification of Tensorboard
 tensorboard = TensorBoard(
     log_dir=r'F:\TensorBoard_logs\{}'.format('frcnn_1layer'),
     histogram_freq=0,
-    #batch_size = batch_size,
+    batch_size = batch_size,
     write_graph=True,
-    #write_grads=True,
+    write_grads=True,
     #histogram_freq=1,
     write_images=True,
 )
+# for Werner:
+# so I am focusing to check Tensorboard callbacks only of classifier...
+# Can I do that for model_all()? Which consists of model_classifier (CNN for classification) and model_rpn (RPN for label regression)?
 tensorboard.set_model(model_classifier)
+
 losses = np.zeros((epoch_length, 5))
 rpn_accuracy_rpn_monitor = []
 rpn_accuracy_for_epoch = []
@@ -181,6 +187,8 @@ class_mapping_inv = {v: k for k, v in class_mapping.items()}
 print('Starting training')
 
 vis = True
+# for Werner:
+# I guess I don't specified this function for Tensorboard properly:
 def named_logs(model, logs):
   result = {}
   for l in zip(model.metrics_names, logs):
@@ -254,7 +262,9 @@ for epoch_num in range(num_epochs):
 					sel_samples = random.choice(pos_samples)
 
 			loss_class = model_classifier.train_on_batch([X, X2[:, sel_samples, :]], [Y1[:, sel_samples, :], Y2[:, sel_samples, :]])
-            tensorboard.on_epoch_end(epoch_num, named_logs(model_rpn, loss_rpn))
+        # for Werner:
+	# I cannot place this piece of code. Should be inside this loop, but it produces error and doesn't let the model to start:
+	tensorboard.on_epoch_end(epoch_num, named_logs(model_classifier, loss_classifier))
 			losses[iter_num, 0] = loss_rpn[1]
 			losses[iter_num, 1] = loss_rpn[2]
 
