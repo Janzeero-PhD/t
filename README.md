@@ -12,6 +12,16 @@ Please consider (my settings to run this model):
 - but CUDA is 10.0.
 Probably CUDA should be 9.0. and this will not produce some discrepancies which I faced training this model on my GPU (RTX2060). Will check it later.
 
+# To run a model:
+1. Clone repository.
+2. Activate your working environment in Linux or Anaconda prompt.
+3. Set working directory there as a folder with cloned Github repository.
+4. Run in command prompt:
+# python train_frcnn.py -o simple -p annotate.txt
+
+5. For the testing after training, create there a folder 'results_imgs' and run:
+# python test_frcnn.py -p test_images
+
 
 The examples of training images (without labels):
 ![ex1](https://i.imgur.com/hvuAXqK.jpg)
